@@ -5,7 +5,7 @@ class apitest extends CI_Controller
 {
 
     /*
-        Welcome xCommerce RESTful API Test
+        Welcome to xCommerce RESTful API Test
 
         Allowed HTTP Methods  --> [GET, POST, PATCH, DELETE, OPTIONS]
         Authentication Method --> Basic Auth
