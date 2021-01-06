@@ -82,18 +82,3 @@ class apitest extends CI_Controller
         curl_close($ch);
     }
 }
-
-
-
-
-
-        // $response = curl_exec($ch);
-        // curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-        // curl_setopt($ch, CURLOPT_HEADER, 1);
-        // $header_size = curl_getinfo($ch, CURLINFO_HEADER_SIZE);
-        // $header = substr($response, 0, $header_size);
-        // $body = substr($response, $header_size);
-        // echo "<br>";
-        // echo $header;
-        // echo "<br>";
-        // echo $body;
