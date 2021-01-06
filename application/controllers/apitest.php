@@ -62,7 +62,7 @@ class apitest extends CI_Controller
             'product_price' => "20",
             'product_discount' => "0",
             'product_status' => "1",
-            'stock_code' => "TEST-002",
+            'stock_code' => "TEST-003",
         );
         $product_json = json_encode($product_json);                // Array to JSON Func.
 
@@ -108,19 +108,17 @@ class apitest extends CI_Controller
 
 
     /*
-        RESTful API Get Product info.
-        HTTP Method        --> GET
+        RESTful API Delete Product
+        HTTP Method             --> DELETE
         -----------------------------------------------------------------------------
-        _URL_/api/product                    --> Gel all product info.
-        _URL_/api/product/{id}               --> Get product info by id
-        _URL_/api/product/{id}/{column_name} --> Get product {column_name} info by id 
+        _URL_/api/product/{id}  --> Delete Product by id
     */
     public function delete()
     {
         $user = "beratyavuzyigit";                        // Basic Auth Username
         $pass = "123";                                    // Basic Auth Password
-        $url = 'http://localhost/rest_api/api/product/';  // Request Url
-        $method = "GET";                                  // Set HTTP Method
+        $url = 'http://localhost/rest_api/api/product/8'; // Request Url
+        $method = "DELETE";                               // Set HTTP Method
         $this->curl($user, $pass, $url, $method);         // cURL func.
     }
 
