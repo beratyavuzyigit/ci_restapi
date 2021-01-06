@@ -137,7 +137,7 @@ class apitest extends CI_Controller
         $ch = curl_init();
         curl_setopt($ch, CURLOPT_HTTPHEADER, $headr);       // Set Option HTTP Header
         curl_setopt($ch, CURLOPT_URL, $url);                // Set Option cURL URL
-        curl_setopt($ch, CURLOPT_CUSTOMREQUEST, $method);   // Set Option HTTP Method
+        curl_setopt($ch, CURLOPT_CUSTOMREQUEST, $method);   // Set Method with Custom Request
 
         /* Check if exists body */
         if ($body != null) {
