@@ -18,6 +18,20 @@ Codeigniter çatısı altında geliştirdiğim ecommerce için REST API örneği
 
 ## KURULUMU
 
+1. Veri tabanı oluşturun ve `restapi.sql` dosyasını içe aktar yapın.
+2. `config/config.php` dosyasında bir `base_url` tanımlayın.
+```php
+$config['base_url'] = 'https://domain_name/';
+```
+3. `config/database.php` dosyasında veri tabanı bağlantı ayarlarını yapın.
+4. Varsayılan `Response` formatını değiştirmek isterseniz `libraries/Restapi_formatter.php` dosyasındaki `$default` değişkenini değiştirin. Ya da varsayılanı değiştirmeden metoda özel format belirleyebilirsiniz. Bunu verinin formata dönüştürülmeden hemen önce belirlemelisiniz.
+```php
+public $default = "json"; // Set Default Format to be Converted
+```
+```php
+$response = $this->restapi_formatter->set_format("JSON"); // Set X Format to be Converted
+$response = $this->restapi_formatter->convert_to_format($result); // Convert to X Format
+```
 
 
 ## KULLANIMI
@@ -164,7 +178,7 @@ public function update()
 `DELETE` işleminde, `READ` işleminde olduğu gibi veri yollamanıza gerek yoktur. Yalnızca silinecek olan ürüne ait `id` değerini URL'de belirtmeniz yeterlidir.
 
 PHP için örnek bir kullanım:
-````php
+```php
 /*
     RESTful API Delete Product
     HTTP Method             --> DELETE
@@ -180,3 +194,20 @@ public function delete()
     $this->curl($user, $pass, $url, $method);         // cURL func.
 }
 ```
+
+## Authorization
+Veri tabanındaki `authentication` tablosunda bulunan `authorization` sütununun içeriğinde 4 karakterli `string` ifade yer almaktadır. Bu sayılardan;
+
+- `1` yetkili
+- `0` yetkisiz
+
+anlamına gelirken basamak sırasına göre
+
+1. READ
+2. CREATE
+3. UPDATE
+4. DELETE
+
+yetkilerini temsil eder.
+
+Örneğin; `1010` verisine sahip bir sütunda, yetkili kimsenin sadece `READ` ve `UPDATE` işlemlerini gerçekleştirmeye yetkisi vardır. Diğer bir örnekte ise `1110` yetkisine sahip bir kimsenin `READ`, `CREATE` ve `UPDATE` işlemlerine yetkisi bulunmaktadır.
