@@ -68,11 +68,11 @@ private function curl($user, $pass, $url, $method, $body = null)
 #### READ
 `READ` işleminde `Body` üzerinden veri yollamanıza gerek yoktur.
 
-Tüm verileri çekmek için `{base_url}/api/product/`
+Tüm verileri çekmek için `{base_url}/api/{table_name}/`
 
-Bir ürüne ait verileri çekmek için `{base_url}/api/product/{id}`
+Bir ürüne ait verileri çekmek için `{base_url}/api/{table_name}/{id}`
 
-Bir ürüne ait bir sütun verisi çekmek için `{base_url}/api/product/{id}/{column_name}`
+Bir ürüne ait bir sütun verisi çekmek için `{base_url}/api/{table_name}/{id}/{column_name}`
 
 PHP için örnek bir kullanım:
 
@@ -81,15 +81,15 @@ PHP için örnek bir kullanım:
     RESTful API Get Product info.
     HTTP Method        --> GET
     -----------------------------------------------------------------------------
-    _URL_/api/product                    --> Gel all product info.
-    _URL_/api/product/{id}               --> Get product info by id
-    _URL_/api/product/{id}/{column_name} --> Get product {column_name} info by id 
+    _URL_/api/{table_name}                    --> Gel all table info.
+    _URL_/api/{table_name}/{id}               --> Get product info by id
+    _URL_/api/{table_name}/{id}/{column_name} --> Get product {column_name} info by id 
 */
 public function read()
 {
     $user = "beratyavuzyigit";                        // Basic Auth Username
     $pass = "123";                                    // Basic Auth Password
-    $url = 'http://localhost/rest_api/api/product/';  // Request Url
+    $url = 'http://localhost/rest_api/api/products';  // Request Url
     $method = "GET";                                  // Set HTTP Method
     $this->curl($user, $pass, $url, $method);         // cURL func.
 }
@@ -101,19 +101,19 @@ public function read()
 PHP için örnek bir kullanım:
 ```php
 /*
-    RESTful API Create New Product
-    HTTP Method        --> POST
-    _URL_/api/product/ --> defined URL
-    --------------------------------------
-            ***  collumns  ***
-        product_name     => required
-        product_desc     => required
-        img_url          => required
-        product_price    => required
-        product_discount => default "0"
-        product_status   => required
-        stock_code       => required
-    --------------------------------------
+RESTful API Create New Product
+HTTP Method             --> POST
+_URL_/api/{table_name}/ --> defined URL
+--------------------------------------
+    ***  products collumns  ***
+    product_name     => required
+    product_desc     => required
+    img_url          => required
+    product_price    => required
+    product_discount => default "0"
+    product_status   => required
+    stock_code       => required
+--------------------------------------
 */
 public function create()
 {
@@ -125,13 +125,13 @@ public function create()
         'product_price' => "20",
         'product_discount' => "0",
         'product_status' => "1",
-        'stock_code' => "TEST-003",
+        'stock_code' => "TEST-004",
     );
     $product_json = json_encode($product_json);                // Array to JSON Func.
 
     $user = "beratyavuzyigit";                                 // Basic Auth Username
     $pass = "123";                                             // Basic Auth Password
-    $url = 'http://localhost/rest_api/api/product';            // Request Url
+    $url = 'http://localhost/rest_api/api/products';           // Request Url
     $method = "POST";                                          // Set HTTP Method
     $this->curl($user, $pass, $url, $method, $product_json);   // cURL func.
 }
@@ -144,8 +144,8 @@ PHP için örnek bir kullanım:
 ```php
 /*
     RESTful API Update Product
-    HTTP Method        --> PATCH
-    _URL_/api/product/ --> defined URL
+    HTTP Method             --> PATCH
+    _URL_/api/{table_name}/ --> defined URL
     --------------------------------------
             ***  collumns  ***
         stock_code       => required
@@ -165,13 +165,13 @@ public function update()
         'product_name' => "URUN_TEST",
         'product_desc' => "restapi post test",
     );
-    $product_json = json_encode($product_json);                // Array to JSON Func.
+    $product_json = json_encode($product_json);                 // Array to JSON Func.
 
-    $user = "beratyavuzyigit";                                 // Basic Auth Username
-    $pass = "123";                                             // Basic Auth Password
-    $url = 'http://localhost/rest_api/api/product';            // Request Url
-    $method = "PATCH";                                         // Set HTTP Method
-    $this->curl($user, $pass, $url, $method, $product_json);   // cURL func.
+    $user = "beratyavuzyigit";                                  // Basic Auth Username
+    $pass = "123";                                              // Basic Auth Password
+    $url = 'http://localhost/rest_api/api/products';            // Request Url
+    $method = "PATCH";                                          // Set HTTP Method
+    $this->curl($user, $pass, $url, $method, $product_json);    // cURL func.
 }
 ```
 #### DELETE
@@ -181,17 +181,17 @@ PHP için örnek bir kullanım:
 ```php
 /*
     RESTful API Delete Product
-    HTTP Method             --> DELETE
+    HTTP Method                  --> DELETE
     -----------------------------------------------------------------------------
-    _URL_/api/product/{id}  --> Delete Product by id
+    _URL_/api/{table_name}/{id}  --> Delete Product by id
 */
 public function delete()
 {
-    $user = "beratyavuzyigit";                        // Basic Auth Username
-    $pass = "123";                                    // Basic Auth Password
-    $url = 'http://localhost/rest_api/api/product/8'; // Request Url
-    $method = "DELETE";                               // Set HTTP Method
-    $this->curl($user, $pass, $url, $method);         // cURL func.
+    $user = "beratyavuzyigit";                         // Basic Auth Username
+    $pass = "123";                                     // Basic Auth Password
+    $url = 'http://localhost/rest_api/api/products/8'; // Request Url
+    $method = "DELETE";                                // Set HTTP Method
+    $this->curl($user, $pass, $url, $method);          // cURL func.
 }
 ```
 
