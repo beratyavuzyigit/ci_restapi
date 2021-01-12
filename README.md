@@ -210,4 +210,4 @@ anlamına gelirken basamak sırasına göre
 
 yetkilerini temsil eder.
 
-Örneğin; `1010` verisine sahip bir sütunda, yetkili kimsenin sadece `READ` ve `UPDATE` işlemlerini gerçekleştirmeye yetkisi vardır. Diğer bir örnekte ise `1110` yetkisine sahip bir kimsenin `READ`, `CREATE` ve `UPDATE` işlemlerine yetkisi bulunmaktadır.
+Örneğin; `1010` verisine sahip bir sütunda, yetkili kimsenin sadece `READ` ve `UPDATE` işlemlerini gerçekleştirmeye yetkisi vardır. Diğer bir örnekte ise `1110` yetkisine sahip bir kimsenin `READ`, `CREATE` ve `UPDATE` işlemlerinde yetkisi bulunmaktadır.
